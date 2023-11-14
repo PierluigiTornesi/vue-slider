@@ -31,11 +31,11 @@ const app = createApp({
                 }
             ],
             activeIndex: 0,
+            interval: setInterval(this.showNext,3000)
         }
     },
     created(){
-        //autoplay dello slider
-        setInterval(this.showNext,3000)
+        this.interval;
     },
     methods: {
         showNext: function(){
@@ -54,6 +54,12 @@ const app = createApp({
            },
         showImage: function(active){
             this.activeIndex = active;
+        },
+        handleHover: function(){
+            clearInterval(this.interval)
+        },
+        handleLeave: function(){
+            this.interval = setInterval(this.showNext,3000)
         }
     }
 }).mount("#app");

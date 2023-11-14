@@ -30,7 +30,7 @@
                     </div>
                 </div>
 
-                <div class="thumbs">
+                <div class="thumbs " v-on:mouseover="handleHover"  v-on:mouseleave="handleLeave">
                     <!-- aggiungo i click alle due freccie con vue -->
                     <div class="prev"  @click="showPrev"></div>
                     <div class="next"  @click="showNext"></div>
