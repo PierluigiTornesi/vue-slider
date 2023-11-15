@@ -31,11 +31,11 @@ const app = createApp({
                 }
             ],
             activeIndex: 0,
-            interval: setInterval(this.showNext,3000)
+            interval: null,
         }
     },
     created(){
-        this.interval;
+        this.interval = setInterval(this.showNext,3000);
     },
     methods: {
         showNext: function(){
@@ -44,22 +44,23 @@ const app = createApp({
             }else{
                 this.activeIndex++;
             }
-           },
-           showPrev: function(){
+        },
+        showPrev: function(){
             if(this.activeIndex === 0){
                 this.activeIndex = this.slides.length - 1;
             }else{
                 this.activeIndex--;
             }
-           },
-        showImage: function(active){
-            this.activeIndex = active;
+        },
+        showImage: function(clickedIndex){
+            this.activeIndex = clickedIndex;
         },
         handleHover: function(){
-            clearInterval(this.interval)
+            clearInterval(this.interval);
+            this.interval = null;
         },
         handleLeave: function(){
-            this.interval = setInterval(this.showNext,3000)
+            this.interval = setInterval(this.showNext,3000);
         }
     }
 }).mount("#app");
